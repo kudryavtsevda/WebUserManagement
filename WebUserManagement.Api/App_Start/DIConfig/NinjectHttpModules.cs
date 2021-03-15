@@ -14,8 +14,7 @@ using WebUserManagement.Api.Services;
 namespace WebUserManagement.Api.App_Start.DIConfig
 {
     public class NinjectHttpModules
-    {
-        //Return Lists of Modules in the Application
+    {        
         public static NinjectModule[] Modules
         {
             get
@@ -23,8 +22,7 @@ namespace WebUserManagement.Api.App_Start.DIConfig
                 return new[] { new MainModule() };
             }
         }
-
-        //Main Module For Application
+        
         public class MainModule : NinjectModule
         {
             private readonly string _connectionString;
@@ -46,7 +44,6 @@ namespace WebUserManagement.Api.App_Start.DIConfig
                 Bind<IMapper>().ToConstructor(_ => new Mapper(new MapperConfiguration(cgf => cgf.CreateMap<User, UserResponse>())))
                     .InSingletonScope();
             }
-
         }
     }
 }

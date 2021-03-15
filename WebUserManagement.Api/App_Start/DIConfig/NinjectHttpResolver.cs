@@ -8,10 +8,7 @@ using System.Web;
 using System.Web.Http.Dependencies;
 
 namespace WebUserManagement.Api.App_Start.DIConfig
-{
-    /// <summary>
-    /// Resolves Dependencies Using Ninject
-    /// </summary>
+{   
     public class NinjectHttpResolver : IDependencyResolver, IDependencyScope
     {
         public IKernel Kernel { get; private set; }
@@ -38,7 +35,7 @@ namespace WebUserManagement.Api.App_Start.DIConfig
 
         public void Dispose()
         {
-            //Do Nothing
+            
         }
 
         public IDependencyScope BeginScope()

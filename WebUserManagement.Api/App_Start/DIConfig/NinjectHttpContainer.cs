@@ -8,15 +8,11 @@ using System.Web;
 using System.Web.Http;
 
 namespace WebUserManagement.Api.App_Start.DIConfig
-{
-    /// <summary>
-    /// Its job is to Register Ninject Modules and Resolve Dependencies
-    /// </summary>
+{    
     public class NinjectHttpContainer
     {
         private static NinjectHttpResolver _resolver;
-
-        //Register Ninject Modules
+                
         public static void RegisterModules(NinjectModule[] modules)
         {
             _resolver = new NinjectHttpResolver(modules);
@@ -25,12 +21,10 @@ namespace WebUserManagement.Api.App_Start.DIConfig
 
         public static void RegisterAssembly()
         {
-            _resolver = new NinjectHttpResolver(Assembly.GetExecutingAssembly());
-            //This is where the actual hookup to the Web API Pipeline is done.
+            _resolver = new NinjectHttpResolver(Assembly.GetExecutingAssembly());            
             GlobalConfiguration.Configuration.DependencyResolver = _resolver;
         }
-
-        //Manually Resolve Dependencies
+       
         public static T Resolve<T>()
         {
             return _resolver.Kernel.Get<T>();
