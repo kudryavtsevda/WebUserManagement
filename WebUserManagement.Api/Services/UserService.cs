@@ -26,7 +26,12 @@ namespace WebUserManagement.Api.Services
 
         public async Task<long> CreateAsync(CreateUserRequest request)
         {
-            throw new NotImplementedException();
+            using (_context)
+            {
+                var user = _context.Users.Add(_mapper.Map<User>(request));
+                await _context.SaveChangesAsync();
+                return user.Id;
+            }
         }
 
         public async Task<long> DeleteAsync(long id)

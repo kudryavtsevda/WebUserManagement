@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using System.Threading.Tasks;
 using System.Web.Http;
+using WebUserManagement.Api.DTO;
 using WebUserManagement.Api.Services;
 
 namespace WebUserManagement.Api.Controllers
@@ -17,9 +18,17 @@ namespace WebUserManagement.Api.Controllers
         }
 
         [Route("")]
+        [HttpGet]
         public async Task<IHttpActionResult> GetAll()
         {            
             return Ok(await _service.GetAllAsync());
+        }
+
+        [Route("")]
+        [HttpPost]
+        public async Task<IHttpActionResult> Create(CreateUserRequest request)
+        {
+            return Ok(await _service.CreateAsync(request));
         }
     }
 }
