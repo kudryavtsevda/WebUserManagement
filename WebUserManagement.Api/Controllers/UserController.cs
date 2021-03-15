@@ -9,9 +9,9 @@ namespace WebUserManagement.Api.Controllers
     {
         private readonly IUserService _service;
 
-        public UserController()
+        public UserController(IUserService service)
         {
-            _service = new UserService();
+            _service = service;
         }
 
         [Route("")]

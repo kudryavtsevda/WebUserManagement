@@ -14,11 +14,6 @@ namespace WebUserManagement.Api.DAL
 
         }
 
-        public ApplicationContext() : base("DbConnection")
-        {
-
-        }
-
         public DbSet<User> Users { get; set; }
     }
 }

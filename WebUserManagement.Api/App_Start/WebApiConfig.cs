@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Headers;
+﻿using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Mvc;
 using System.Web.Http;
+using System.Web.Mvc;
 
 namespace WebUserManagement.Api.App_Start
 {
@@ -24,6 +24,10 @@ namespace WebUserManagement.Api.App_Start
 
             // We don't need the xml formatter
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+
+           
+            //config.DependencyResolver = (System.Web.Http.Dependencies.IDependencyResolver)(IDependencyResolver) new NinjectDependencyResolver(kernel);
+            //DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }

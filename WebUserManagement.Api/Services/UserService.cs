@@ -13,11 +13,7 @@ namespace WebUserManagement.Api.Services
     public class UserService : IUserService
     {
         private readonly ApplicationContext _context;
-        public UserService()
-        {
-            _context = new ApplicationContext();
-        }
-
+        
         public UserService(ApplicationContext context)
         {
             _context = context;
@@ -30,24 +26,30 @@ namespace WebUserManagement.Api.Services
 
         public async Task<long> DeleteAsync(long id)
         {
-            var user = await _context.Users.FindAsync(id)
-                ?? throw new NotFoundException($"User is not found with id {id}");
+            using (_context)
+            {
+                var user = await _context.Users.FindAsync(id)
+                      ?? throw new NotFoundException($"User is not found with id {id}");
 
-            _context.Users.Remove(user);
-            await _context.SaveChangesAsync();
-            return id;
+                _context.Users.Remove(user);
+                await _context.SaveChangesAsync();
+                return id;
+            }
         }
 
         public async Task<IEnumerable<UserResponse>> GetAllAsync()
         {
-            return (await _context.Users.AsNoTracking().ToListAsync())
-                        .Select(u => new UserResponse
-                        {
-                            Id = u.Id,
-                            FirstName = u.FirstName,
-                            LastName = u.LastName,
-                            Email = u.Email
-                        });
+            using (_context)
+            {
+                return (await _context.Users.AsNoTracking().ToListAsync())
+                            .Select(u => new UserResponse
+                            {
+                                Id = u.Id,
+                                FirstName = u.FirstName,
+                                LastName = u.LastName,
+                                Email = u.Email
+                            });
+            }
         }
 
         public async Task<long> UpdateAsync(UpdateUserRequest request)
