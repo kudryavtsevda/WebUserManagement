@@ -1,4 +1,5 @@
-﻿using Ninject.Modules;
+﻿using AutoMapper;
+using Ninject.Modules;
 using Ninject.Web.Common;
 using System;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using WebUserManagement.Api.DAL;
+using WebUserManagement.Api.DAL.Models;
+using WebUserManagement.Api.DTO;
 using WebUserManagement.Api.Services;
 
 namespace WebUserManagement.Api.App_Start.DIConfig
@@ -40,7 +43,10 @@ namespace WebUserManagement.Api.App_Start.DIConfig
             {
                 Bind<ApplicationContext>().ToSelf().InRequestScope().WithConstructorArgument(_connectionString);
                 Bind<IUserService>().To<UserService>().InRequestScope();
+                Bind<IMapper>().ToConstructor(_ => new Mapper(new MapperConfiguration(cgf => cgf.CreateMap<User, UserResponse>())))
+                    .InSingletonScope();
             }
+
         }
     }
 }

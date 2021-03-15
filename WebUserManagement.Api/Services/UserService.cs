@@ -1,10 +1,12 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using WebUserManagement.Api.DAL;
+using WebUserManagement.Api.DAL.Models;
 using WebUserManagement.Api.DTO;
 using WebUserManagement.Api.Exceptions;
 
@@ -13,10 +15,13 @@ namespace WebUserManagement.Api.Services
     public class UserService : IUserService
     {
         private readonly ApplicationContext _context;
-        
-        public UserService(ApplicationContext context)
+        private readonly IMapper _mapper;
+
+
+        public UserService(ApplicationContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         public async Task<long> CreateAsync(CreateUserRequest request)
@@ -42,13 +47,7 @@ namespace WebUserManagement.Api.Services
             using (_context)
             {
                 return (await _context.Users.AsNoTracking().ToListAsync())
-                            .Select(u => new UserResponse
-                            {
-                                Id = u.Id,
-                                FirstName = u.FirstName,
-                                LastName = u.LastName,
-                                Email = u.Email
-                            });
+                            .Select(u => _mapper.Map<User, UserResponse>(u));
             }
         }
 
