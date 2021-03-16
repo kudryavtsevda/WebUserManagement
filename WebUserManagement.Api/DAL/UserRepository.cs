@@ -7,11 +7,23 @@ using System.Threading.Tasks;
 using WebUserManagement.Api.DAL.Models;
 using System.Transactions;
 using WebUserManagement.Api.Exceptions;
+using System;
 
 namespace WebUserManagement.Api.DAL
 {
     public class UserRepository : IRepository
     {
+        private class StoredProcedureDefinitionAndParameters
+        {
+            public StoredProcedureDefinitionAndParameters(string storedProcedureName, object value)
+            {
+                StoreProcedureName = storedProcedureName;
+                Value = value;
+            }
+            public string StoreProcedureName { get; }
+            public object Value { get; }
+        }
+
         private readonly string _connectionString;
         public UserRepository(string connectionString)
         {
@@ -27,18 +39,9 @@ namespace WebUserManagement.Api.DAL
             }
         }
 
-        public async Task<long> DeleteAsync(long id)
+        public async Task<bool> DeleteAsync(long id)
         {
-            using (var scope = new TransactionScope())
-            using (var connection = GetConnection())
-            {
-                await CheckIfUserExists(id, connection);
-
-                await connection.ExecuteScalarAsync("DeleteUser", id, commandType: CommandType.StoredProcedure);
-                scope.Complete();
-
-                return id;
-            }
+            return await ExecuteStoredProcedureInTransaction(id, new StoredProcedureDefinitionAndParameters("DeleteUser", new { Id = id }));
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
@@ -49,30 +52,30 @@ namespace WebUserManagement.Api.DAL
             }
         }
 
-        public async Task<long> UpdateAsync(User user)
+        public async Task<bool> UpdateAsync(User user)
         {
-            return await ExecuteQuery(user);
+            return await ExecuteStoredProcedureInTransaction(user.Id, new StoredProcedureDefinitionAndParameters("UpdateUser", user));
         }
 
-        private async Task<long> ExecuteQuery(User user)
+        private async Task<bool> ExecuteStoredProcedureInTransaction(long userId, StoredProcedureDefinitionAndParameters command)
         {
-            using (var scope = new TransactionScope())
+            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             using (var connection = GetConnection())
             {
 
-                await CheckIfUserExists(user.Id, connection);
+                if (!await CheckIfUserExists(userId, connection))
+                    return false;
 
-                await connection.ExecuteScalarAsync("UpdateUser", user, commandType: CommandType.StoredProcedure);
-
+                await connection.ExecuteScalarAsync(command.StoreProcedureName, command.Value, commandType: CommandType.StoredProcedure);
                 scope.Complete();
-                return user.Id;
+                return true;
             }
         }
 
-        private async Task CheckIfUserExists(long id, IDbConnection connection)
+
+        private async Task<bool> CheckIfUserExists(long id, IDbConnection connection)
         {
-            _ = (await connection.QueryAsync<User>("GetUserById", id, commandType: CommandType.StoredProcedure))
-                                        .FirstOrDefault() ?? throw new NotFoundException($"User is not found with id {id}");
+            return (await connection.QueryAsync<User>("GetUserById", new { Id = id }, commandType: CommandType.StoredProcedure)).Any();
         }
 
         private IDbConnection GetConnection()

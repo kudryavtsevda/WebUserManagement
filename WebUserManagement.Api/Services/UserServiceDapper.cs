@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using WebUserManagement.Api.DAL;
 using WebUserManagement.Api.DAL.Models;
 using WebUserManagement.Api.DTO;
+using WebUserManagement.Api.Exceptions;
 
 namespace WebUserManagement.Api.Services
 {
@@ -26,7 +27,10 @@ namespace WebUserManagement.Api.Services
 
         public async Task<long> DeleteAsync(long id)
         {
-            return await _repository.DeleteAsync(id);
+            if (!await _repository.DeleteAsync(id))
+                throw new NotFoundException($"User is not found with id {id}");
+
+            return id;
         }
 
         public async Task<IEnumerable<UserResponse>> GetAllAsync()
@@ -38,7 +42,11 @@ namespace WebUserManagement.Api.Services
         {
             var user = _mapper.Map<User>(request);
             user.Id = id;
-            return await _repository.UpdateAsync(user);
+
+            if (!await _repository.UpdateAsync(user))
+                throw new NotFoundException($"User is not found with id {id}");
+
+            return id;
         }
     }
 }
