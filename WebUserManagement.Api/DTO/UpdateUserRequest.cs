@@ -12,6 +12,7 @@ namespace WebUserManagement.Api.DTO
         [Required]
         public string FirstName { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
     }
 }

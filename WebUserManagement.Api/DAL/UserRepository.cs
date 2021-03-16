@@ -6,8 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebUserManagement.Api.DAL.Models;
 using System.Transactions;
-using WebUserManagement.Api.Exceptions;
-using System;
 
 namespace WebUserManagement.Api.DAL
 {
