@@ -39,8 +39,10 @@ namespace WebUserManagement.Api.App_Start.DIConfig
 
             public override void Load()
             {
-                Bind<ApplicationContext>().ToSelf().InRequestScope().WithConstructorArgument(_connectionString);
-                Bind<IUserService>().To<UserService>().InRequestScope();
+                //Bind<ApplicationContext>().ToSelf().InRequestScope().WithConstructorArgument(_connectionString);
+                //Bind<IUserService>().To<UserServiceEF>().InRequestScope();
+                Bind<IRepository>().To<UserRepository>().InRequestScope().WithConstructorArgument(_connectionString);
+                Bind<IUserService>().To<UserServiceDapper>().InRequestScope();
                 Bind<IMapper>().ToMethod(x => ConfigureMapping())
                     .InSingletonScope();
             }
@@ -51,6 +53,7 @@ namespace WebUserManagement.Api.App_Start.DIConfig
                 {
                     cgf.CreateMap<User, UserResponse>();
                     cgf.CreateMap<CreateUserRequest, User>();
+                    cgf.CreateMap<UpdateUserRequest, User>();
                 }));
             }
         }

@@ -5,10 +5,11 @@ using System.Web;
 
 namespace WebUserManagement.Api.Exceptions
 {
-    public class NotFoundException : CustomApiException
+    public class BadRequestException : CustomApiException
     {
-        public NotFoundException(string message) : base(StatusCode.NotFound, message)
+        public BadRequestException(string message) : base(StatusCode.BadRequest, message)
         {
+
         }
     }
 }
