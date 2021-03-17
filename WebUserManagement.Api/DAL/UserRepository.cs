@@ -1,7 +1,6 @@
 ﻿using Dapper;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using WebUserManagement.Api.DAL.Models;
@@ -9,12 +8,14 @@ using WebUserManagement.Api.DAL.Models;
 namespace WebUserManagement.Api.DAL
 {
     public class UserRepository : IRepository
-    {
-        private readonly string _connectionString;
-        public UserRepository(string connectionString)
+    {        
+        private readonly IDbConnection _connection;
+        
+        public UserRepository(IDbConnection connection)
         {
-            _connectionString = connectionString;
+            _connection = connection;
         }
+
         public async Task<long> CreateAsync(User user)
         {
             using (var connection = GetConnection())
@@ -59,10 +60,9 @@ namespace WebUserManagement.Api.DAL
         }
        
         private IDbConnection GetConnection()
-        {
-            var connection = new SqlConnection(_connectionString);
-            connection.Open();
-            return connection;
+        {            
+            _connection.Open();
+            return _connection;
         }
     }
 }

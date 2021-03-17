@@ -6,6 +6,8 @@ using WebUserManagement.Api.DAL;
 using WebUserManagement.Api.DAL.Models;
 using WebUserManagement.DTO;
 using WebUserManagement.Api.Services;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace WebUserManagement.Api.App_Start.DIConfig
 {
@@ -34,8 +36,9 @@ namespace WebUserManagement.Api.App_Start.DIConfig
             }
 
             public override void Load()
-            {                
-                Bind<IRepository>().To<UserRepository>().InRequestScope().WithConstructorArgument(_connectionString);
+            {  
+                Bind<IDbConnection>().To<SqlConnection>().WithConstructorArgument(_connectionString);
+                Bind<IRepository>().To<UserRepository>().InRequestScope();
                 Bind<IUserService>().To<UserService>().InRequestScope();
                 Bind<IMapper>().ToMethod(x => ConfigureMapping())
                     .InSingletonScope();
