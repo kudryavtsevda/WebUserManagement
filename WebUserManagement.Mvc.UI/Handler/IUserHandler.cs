@@ -1,10 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using WebUserManagement.DTO;
 
-namespace WebUserManagement.Api.Services
+namespace WebUserManagement.Mvc.UI.Handler
 {
-    public interface IUserService
+    public interface IUserHandler
     {
         Task<long> CreateAsync(CreateUserRequest request);
         Task<long> UpdateAsync(long id, UpdateUserRequest request);

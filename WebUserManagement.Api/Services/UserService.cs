@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebUserManagement.Api.DAL;
 using WebUserManagement.Api.DAL.Models;
-using WebUserManagement.Api.DTO;
+using WebUserManagement.DTO;
 using WebUserManagement.Api.Exceptions;
 
 namespace WebUserManagement.Api.Services
@@ -37,11 +37,16 @@ namespace WebUserManagement.Api.Services
             return (await _repository.GetAllAsync()).Select(u => _mapper.Map<UserResponse>(u));
         }
 
+        public async Task<UserResponse> GetByIdAsync(long id)
+        {
+            return _mapper.Map<UserResponse>(await GetUserByIdAsync(id));
+        }
+
         public async Task<long> UpdateAsync(long id, UpdateUserRequest request)
         {
             var user = await GetUserByIdAsync(id);
             _mapper.Map(request, user);
-            await _repository.UpdateAsync(user);           
+            await _repository.UpdateAsync(user);
             return id;
         }
 

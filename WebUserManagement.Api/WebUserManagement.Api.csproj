@@ -155,9 +155,6 @@
     <Compile Include="DAL\UserRepository.cs" />
     <Compile Include="DAL\IRepository.cs" />
     <Compile Include="DAL\Models\User.cs" />
-    <Compile Include="DTO\UserResponse.cs" />
-    <Compile Include="DTO\CreateUserRequest.cs" />
-    <Compile Include="DTO\UpdateUserRequest.cs" />
     <Compile Include="Exceptions\CustomApiException.cs" />
     <Compile Include="Exceptions\NotFoundException.cs" />
     <Compile Include="Filters\ApiExceptionFilterAttribute.cs" />
@@ -179,7 +176,12 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\WebUserManagement.DTO\WebUserManagement.DTO.csproj">
+      <Project>{438051dc-a9d7-4fd0-b937-21153ba0ef0b}</Project>
+      <Name>WebUserManagement.DTO</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

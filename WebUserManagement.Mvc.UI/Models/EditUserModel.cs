@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebUserManagement.Api.DTO
+namespace WebUserManagement.Mvc.UI.Models
 {
-    public class UpdateUserRequest
+    public class EditUserModel
     {
+        public long Id { get; set; }
         public string LastName { get; set; }
         [Required]
         public string FirstName { get; set; }

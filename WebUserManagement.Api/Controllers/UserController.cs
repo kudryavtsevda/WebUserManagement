@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 using System.Web.Http;
-using WebUserManagement.Api.DTO;
+using WebUserManagement.DTO;
 using WebUserManagement.Api.Services;
 
 namespace WebUserManagement.Api.Controllers
@@ -20,6 +20,13 @@ namespace WebUserManagement.Api.Controllers
         public async Task<IHttpActionResult> GetAll()
         {
             return Ok(await _service.GetAllAsync());
+        }
+
+        [Route("{id}")]
+        [HttpGet]
+        public async Task<IHttpActionResult> GetById(long id)
+        {
+            return Ok(await _service.GetByIdAsync(id));
         }
 
         [Route("")]

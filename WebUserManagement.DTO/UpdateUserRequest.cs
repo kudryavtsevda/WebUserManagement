@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebUserManagement.Api.DTO
+namespace WebUserManagement.DTO
 {
-    public class CreateUserRequest
+    public class UpdateUserRequest
     {
         public string LastName { get; set; }
         [Required]

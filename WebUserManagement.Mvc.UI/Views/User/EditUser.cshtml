@@ -1,0 +1,22 @@
+﻿@using WebUserManagement.Mvc.UI.Models
+@model EditUserModel
+
+<form action="/User/EditUser/@Model.Id" method="post">
+    <div>
+        <label for="LastName">LastName: </label>
+        <input type="text" name="lastname" value="@Model.LastName" />
+        @Html.ValidationMessageFor(model => model.LastName)
+    </div>
+    <div>
+        <label for="FirstName">FirstName: </label>
+        <input type="text" name="firstname" value="@Model.FirstName" />
+        @Html.ValidationMessageFor(model => model.FirstName)
+    </div>
+    <div>
+        <label for="Email">Email: </label>
+        <input type="email" name="email" value="@Model.Email" />
+        @Html.ValidationMessageFor(model => model.Email)
+    </div>
+    <div><input type="submit"></div>
+    @Html.ValidationSummary(true)
+</form>

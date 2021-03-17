@@ -4,7 +4,7 @@ using Ninject.Web.Common;
 using System.Configuration;
 using WebUserManagement.Api.DAL;
 using WebUserManagement.Api.DAL.Models;
-using WebUserManagement.Api.DTO;
+using WebUserManagement.DTO;
 using WebUserManagement.Api.Services;
 
 namespace WebUserManagement.Api.App_Start.DIConfig

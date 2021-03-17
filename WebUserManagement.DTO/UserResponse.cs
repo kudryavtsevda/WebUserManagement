@@ -1,4 +1,4 @@
-﻿namespace WebUserManagement.Api.DTO
+﻿namespace WebUserManagement.DTO
 {
     public class UserResponse
     {
