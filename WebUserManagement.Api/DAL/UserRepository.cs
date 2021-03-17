@@ -5,23 +5,11 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using WebUserManagement.Api.DAL.Models;
-using System.Transactions;
 
 namespace WebUserManagement.Api.DAL
 {
     public class UserRepository : IRepository
     {
-        private class StoredProcedureDefinitionAndParameters
-        {
-            public StoredProcedureDefinitionAndParameters(string storedProcedureName, object value)
-            {
-                StoreProcedureName = storedProcedureName;
-                Value = value;
-            }
-            public string StoreProcedureName { get; }
-            public object Value { get; }
-        }
-
         private readonly string _connectionString;
         public UserRepository(string connectionString)
         {
@@ -37,9 +25,12 @@ namespace WebUserManagement.Api.DAL
             }
         }
 
-        public async Task<bool> DeleteAsync(long id)
+        public async Task DeleteAsync(long id)
         {
-            return await ExecuteStoredProcedureInTransaction(id, new StoredProcedureDefinitionAndParameters("DeleteUser", new { Id = id }));
+            using (var connection = GetConnection())
+            {
+                await connection.ExecuteScalarAsync("DeleteUser", new { Id = id }, commandType: CommandType.StoredProcedure);              
+            }           
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
@@ -50,32 +41,23 @@ namespace WebUserManagement.Api.DAL
             }
         }
 
-        public async Task<bool> UpdateAsync(User user)
+        public async Task UpdateAsync(User user)
         {
-            return await ExecuteStoredProcedureInTransaction(user.Id, new StoredProcedureDefinitionAndParameters("UpdateUser", user));
-        }
-
-        private async Task<bool> ExecuteStoredProcedureInTransaction(long userId, StoredProcedureDefinitionAndParameters command)
-        {
-            using (var scope = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
             using (var connection = GetConnection())
             {
-
-                if (!await CheckIfUserExists(userId, connection))
-                    return false;
-
-                await connection.ExecuteScalarAsync(command.StoreProcedureName, command.Value, commandType: CommandType.StoredProcedure);
-                scope.Complete();
-                return true;
+                await connection.ExecuteScalarAsync("UpdateUser", user, commandType: CommandType.StoredProcedure); 
             }
         }
 
-
-        private async Task<bool> CheckIfUserExists(long id, IDbConnection connection)
+        public async Task<User> GetUserByIdAsync(long id)
         {
-            return (await connection.QueryAsync<User>("GetUserById", new { Id = id }, commandType: CommandType.StoredProcedure)).Any();
+            using (var connection = GetConnection())
+            {
+                return (await connection.QueryAsync<User>("GetUserById", new { Id = id }, commandType: CommandType.StoredProcedure))
+                    .FirstOrDefault();
+            }
         }
-
+       
         private IDbConnection GetConnection()
         {
             var connection = new SqlConnection(_connectionString);

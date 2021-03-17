@@ -7,8 +7,9 @@ namespace WebUserManagement.Api.DAL
     public interface IRepository
     {
         Task<long> CreateAsync(User user);
-        Task<bool> UpdateAsync(User user);
-        Task<bool> DeleteAsync(long id);
+        Task UpdateAsync(User user);
+        Task DeleteAsync(long id);
         Task<IEnumerable<User>> GetAllAsync();
+        Task<User> GetUserByIdAsync(long id);
     }
 }

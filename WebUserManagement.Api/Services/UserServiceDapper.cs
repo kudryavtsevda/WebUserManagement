@@ -27,9 +27,8 @@ namespace WebUserManagement.Api.Services
 
         public async Task<long> DeleteAsync(long id)
         {
-            if (!await _repository.DeleteAsync(id))
-                throw new NotFoundException($"User is not found with id {id}");
-
+            await GetUserByIdAsync(id);
+            await _repository.DeleteAsync(id);
             return id;
         }
 
@@ -40,13 +39,16 @@ namespace WebUserManagement.Api.Services
 
         public async Task<long> UpdateAsync(long id, UpdateUserRequest request)
         {
-            var user = _mapper.Map<User>(request);
-            user.Id = id;
-
-            if (!await _repository.UpdateAsync(user))
-                throw new NotFoundException($"User is not found with id {id}");
-
+            var user = await GetUserByIdAsync(id);
+            _mapper.Map(request, user);
+            await _repository.UpdateAsync(user);           
             return id;
+        }
+
+        private async Task<User> GetUserByIdAsync(long id)
+        {
+            return await _repository.GetUserByIdAsync(id)
+                              ?? throw new NotFoundException($"User is not found with id {id}");
         }
     }
 }
