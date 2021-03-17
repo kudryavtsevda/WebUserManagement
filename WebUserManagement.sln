@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.Mvc.UI", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.Api", "WebUserManagement.Api\WebUserManagement.Api.csproj", "{A1713964-4DFB-47A9-A32A-B32981334797}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WebUserManagement.Database", "WebUserManagement.Database\WebUserManagement.Database.sqlproj", "{DA3EF630-7B17-4D38-8721-D865FCF9A035}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,12 @@ Global
 		{A1713964-4DFB-47A9-A32A-B32981334797}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A1713964-4DFB-47A9-A32A-B32981334797}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A1713964-4DFB-47A9-A32A-B32981334797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
