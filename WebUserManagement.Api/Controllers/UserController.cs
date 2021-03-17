@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Http;
 using WebUserManagement.Api.DTO;
 using WebUserManagement.Api.Services;

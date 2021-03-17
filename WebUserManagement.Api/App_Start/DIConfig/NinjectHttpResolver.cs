@@ -2,13 +2,11 @@
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http.Dependencies;
 
 namespace WebUserManagement.Api.App_Start.DIConfig
-{   
+{
     public class NinjectHttpResolver : IDependencyResolver, IDependencyScope
     {
         public IKernel Kernel { get; private set; }

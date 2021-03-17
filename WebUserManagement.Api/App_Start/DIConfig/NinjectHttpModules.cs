@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using Ninject.Modules;
 using Ninject.Web.Common;
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
-using System.Web;
 using WebUserManagement.Api.DAL;
 using WebUserManagement.Api.DAL.Models;
 using WebUserManagement.Api.DTO;
@@ -38,11 +34,9 @@ namespace WebUserManagement.Api.App_Start.DIConfig
             }
 
             public override void Load()
-            {
-                //Bind<ApplicationContext>().ToSelf().InRequestScope().WithConstructorArgument(_connectionString);
-                //Bind<IUserService>().To<UserServiceEF>().InRequestScope();
+            {                
                 Bind<IRepository>().To<UserRepository>().InRequestScope().WithConstructorArgument(_connectionString);
-                Bind<IUserService>().To<UserServiceDapper>().InRequestScope();
+                Bind<IUserService>().To<UserService>().InRequestScope();
                 Bind<IMapper>().ToMethod(x => ConfigureMapping())
                     .InSingletonScope();
             }

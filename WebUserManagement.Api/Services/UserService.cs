@@ -10,11 +10,11 @@ using WebUserManagement.Api.Exceptions;
 
 namespace WebUserManagement.Api.Services
 {
-    public class UserServiceDapper : IUserService
+    public class UserService : IUserService
     {
         private readonly IRepository _repository;
         private readonly IMapper _mapper;
-        public UserServiceDapper(IRepository repository, IMapper mapper)
+        public UserService(IRepository repository, IMapper mapper)
         {
             _repository = repository;
             _mapper = mapper;

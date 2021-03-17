@@ -1,14 +1,10 @@
 ﻿using Ninject;
 using Ninject.Modules;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Web;
 using System.Web.Http;
 
 namespace WebUserManagement.Api.App_Start.DIConfig
-{    
+{
     public class NinjectHttpContainer
     {
         private static NinjectHttpResolver _resolver;
