@@ -57,12 +57,18 @@ namespace WebUserManagement.Mvc.UI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateUser(CreateUserRequest request)
+        public async Task<ActionResult> CreateUser(CreateUserModel request)
         {
             if (!ModelState.IsValid)
                 return View(request);
 
-            _ = await _handler.CreateAsync(request);
+            _ = await _handler.CreateAsync(new CreateUserRequest
+            {
+                LastName = request.LastName,
+                FirstName = request.FirstName,
+                Email = request.Email
+            });
+
             return RedirectToAction("List");
         }
 

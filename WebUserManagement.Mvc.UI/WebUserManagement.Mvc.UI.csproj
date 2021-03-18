@@ -204,6 +204,7 @@
     </Compile>
     <Compile Include="Handler\IUserHandler.cs" />
     <Compile Include="Handler\UserHandler.cs" />
+    <Compile Include="Models\CreateUserModel.cs" />
     <Compile Include="Models\EditUserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

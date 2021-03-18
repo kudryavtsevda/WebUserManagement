@@ -1,6 +1,7 @@
-﻿@using WebUserManagement.DTO
-@model CreateUserRequest
+﻿@using WebUserManagement.Mvc.UI.Models
+@model CreateUserModel
 
+<div>User creation form</div>
 <form action="CreateUser" method="post">
     @Html.ValidationSummary(true)
     <div>
