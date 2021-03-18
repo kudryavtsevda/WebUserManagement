@@ -72,5 +72,14 @@ namespace WebUserManagement.Mvc.UI.Controllers
             _ = await _handler.DeleteAsync(id);
             return RedirectToAction("List");
         }
+
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            filterContext.ExceptionHandled = true;
+            filterContext.Result = new ViewResult
+            {
+                ViewName = "~/Views/Shared/Error.cshtml"
+            };
+        }
     }
 }
