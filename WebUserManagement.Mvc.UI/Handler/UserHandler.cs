@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Web;
 using WebUserManagement.DTO;
 using System.Net.Http.Json;
+using System.Configuration;
 
 namespace WebUserManagement.Mvc.UI.Handler
 {
     public class UserHandler : IUserHandler
     {
-        private static readonly HttpClient _httpClient;
-        static UserHandler()
+        private readonly HttpClient _httpClient;
+        public UserHandler()
         {
-            _httpClient = new HttpClient() { BaseAddress = new Uri("https://localhost:44397/api/users") };
+            //simple web service url injection. I don't care about limited connection per server
+            var baseUrl = ConfigurationManager.AppSettings.Get("ServiceUrl");
+            _httpClient = new HttpClient() { BaseAddress = new Uri(baseUrl) };
         }
         public async Task<long> CreateAsync(CreateUserRequest request)
         {
@@ -25,7 +26,7 @@ namespace WebUserManagement.Mvc.UI.Handler
 
         public async Task<long> DeleteAsync(long id)
         {
-            var res = await _httpClient.DeleteAsync($"/api/users/{id}");
+            var res = await _httpClient.DeleteAsync($"{id}");
             res.EnsureSuccessStatusCode();
             return id;
         }
@@ -37,12 +38,12 @@ namespace WebUserManagement.Mvc.UI.Handler
 
         public async Task<UserResponse> GetByIdAsync(long id)
         {
-            return await _httpClient.GetFromJsonAsync<UserResponse>($"/api/users/{id}");
+            return await _httpClient.GetFromJsonAsync<UserResponse>($"{id}");
         }
 
         public async Task<long> UpdateAsync(long id, UpdateUserRequest request)
         {
-            var res = await _httpClient.PutAsJsonAsync($"/api/users/{id}", request);
+            var res = await _httpClient.PutAsJsonAsync($"{id}", request);
             res.EnsureSuccessStatusCode();
             return id;
         }

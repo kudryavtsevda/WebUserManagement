@@ -5,7 +5,7 @@
     @Html.ValidationSummary(true)
     <div>
         <label for="LastName">LastName: </label>
-        <input type="text" name="lastname" value="@(Model?.LastName)"/>
+        <input type="text" name="lastname" value="@(Model?.LastName)" />
         @Html.ValidationMessageFor(model => model.LastName)
     </div>
     <div>
@@ -15,8 +15,9 @@
     </div>
     <div>
         <label for="Email">Email: </label>
-        <input type="email" name="email" value="@(Model?.Email)"/>
+        <input type="email" name="email" value="@(Model?.Email)" />
         @Html.ValidationMessageFor(model => model.Email)
     </div>
     <div><input type="submit"></div>
+    <div><input id="cancel" type="button" value="Cancel" /></div>
 </form>

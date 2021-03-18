@@ -13,7 +13,7 @@ namespace WebUserManagement.Mvc.UI.Controllers
         {
             _handler = new UserHandler();
         }
-        public async Task<ActionResult> Index()
+        public async Task<ActionResult> List()
         {
             var res = await _handler.GetAllAsync();
             return View(res);
@@ -47,7 +47,7 @@ namespace WebUserManagement.Mvc.UI.Controllers
                 });
 
             _ = await _handler.UpdateAsync(id, request);
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         [HttpGet]
@@ -63,14 +63,14 @@ namespace WebUserManagement.Mvc.UI.Controllers
                 return View(request);
 
             _ = await _handler.CreateAsync(request);
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
 
         [HttpPost]
         public async Task<ActionResult> Delete(long id)
         {
             _ = await _handler.DeleteAsync(id);
-            return RedirectToAction("Index");
+            return RedirectToAction("List");
         }
     }
 }

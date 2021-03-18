@@ -1,5 +1,8 @@
 ﻿@using WebUserManagement.Mvc.UI.Models
 @model EditUserModel
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/User/usercommands.js" ></script>
+
 
 <form action="/User/EditUser/@Model.Id" method="post">
     <div>
@@ -17,6 +20,8 @@
         <input type="email" name="email" value="@Model.Email" />
         @Html.ValidationMessageFor(model => model.Email)
     </div>
-    <div><input type="submit"></div>
-    @Html.ValidationSummary(true)
+    <div>
+        <input type="submit" />
+        <input id="cancel" type="button" value="Cancel" />
+    </div>
 </form>
