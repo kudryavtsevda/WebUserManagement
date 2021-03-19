@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.Api", "We
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WebUserManagement.Database", "WebUserManagement.Database\WebUserManagement.Database.sqlproj", "{DA3EF630-7B17-4D38-8721-D865FCF9A035}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.Tests", "WebUserManagement.Tests\WebUserManagement.Tests.csproj", "{CEE83364-6BC4-43E7-9774-19B3B717C035}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.DTO", "WebUserManagement.DTO\WebUserManagement.DTO.csproj", "{438051DC-A9D7-4FD0-B937-21153BA0EF0B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.XUnitTests", "WebUserManagement.XUnitTests\WebUserManagement.XUnitTests.csproj", "{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}"
@@ -35,10 +33,6 @@ Global
 		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DA3EF630-7B17-4D38-8721-D865FCF9A035}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{CEE83364-6BC4-43E7-9774-19B3B717C035}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CEE83364-6BC4-43E7-9774-19B3B717C035}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CEE83364-6BC4-43E7-9774-19B3B717C035}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CEE83364-6BC4-43E7-9774-19B3B717C035}.Release|Any CPU.Build.0 = Release|Any CPU
 		{438051DC-A9D7-4FD0-B937-21153BA0EF0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{438051DC-A9D7-4FD0-B937-21153BA0EF0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{438051DC-A9D7-4FD0-B937-21153BA0EF0B}.Release|Any CPU.ActiveCfg = Release|Any CPU

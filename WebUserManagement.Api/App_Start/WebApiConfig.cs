@@ -1,4 +1,5 @@
 ﻿using System.Web.Http;
+using WebUserManagement.Api.Filters;
 
 namespace WebUserManagement.Api.App_Start
 {
@@ -8,6 +9,8 @@ namespace WebUserManagement.Api.App_Start
         { 
             config.MapHttpAttributeRoutes();
             config.Formatters.Remove(config.Formatters.XmlFormatter);
+            config.Filters.Add(new ApiExceptionFilterAttribute());
+            config.Filters.Add(new ValidationActionFilter());
         }
     }
 }

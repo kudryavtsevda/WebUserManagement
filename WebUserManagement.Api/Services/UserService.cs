@@ -52,7 +52,7 @@ namespace WebUserManagement.Api.Services
 
         private async Task<User> GetUserByIdAsync(long id)
         {
-            return await _repository.GetUserByIdAsync(id)
+            return await _repository.GetByIdAsync(id)
                           ?? throw new NotFoundException($"User is not found with id {id}");
         }
     }

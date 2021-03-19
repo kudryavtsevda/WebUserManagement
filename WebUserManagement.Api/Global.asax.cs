@@ -1,7 +1,6 @@
 ﻿using System.Web.Http;
 using WebUserManagement.Api.App_Start;
 using WebUserManagement.Api.App_Start.DIConfig;
-using WebUserManagement.Api.Filters;
 
 namespace WebUserManagement.Api
 {
@@ -10,9 +9,7 @@ namespace WebUserManagement.Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            NinjectHttpContainer.RegisterModules(NinjectHttpModules.Modules);
-            GlobalConfiguration.Configuration.Filters.Add(new ApiExceptionFilterAttribute());
-            GlobalConfiguration.Configuration.Filters.Add(new ValidationActionFilter());
+            NinjectHttpContainer.RegisterModules(NinjectHttpModules.Modules);            
         }
     }
 }

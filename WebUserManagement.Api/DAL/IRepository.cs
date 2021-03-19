@@ -11,6 +11,6 @@ namespace WebUserManagement.Api.DAL
         Task UpdateAsync(User user);
         Task DeleteAsync(long id);
         Task<IEnumerable<User>> GetAllAsync();
-        Task<User> GetUserByIdAsync(long id);
+        Task<User> GetByIdAsync(long id);
     }
 }

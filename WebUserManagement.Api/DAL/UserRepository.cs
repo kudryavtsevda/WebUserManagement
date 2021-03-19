@@ -42,7 +42,7 @@ namespace WebUserManagement.Api.DAL
             await GetConnection().ExecuteScalarAsync("UpdateUser", user, commandType: CommandType.StoredProcedure);
         }
 
-        public async Task<User> GetUserByIdAsync(long id)
+        public async Task<User> GetByIdAsync(long id)
         {
             return (await GetConnection().QueryAsync<User>("GetUserById", new { Id = id }, commandType: CommandType.StoredProcedure))
                 .FirstOrDefault();
