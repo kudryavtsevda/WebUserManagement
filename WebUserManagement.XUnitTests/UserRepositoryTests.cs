@@ -5,19 +5,17 @@ using System.Threading.Tasks;
 using WebUserManagement.Api.DAL;
 using System.Data.SqlClient;
 using WebUserManagement.Api.DAL.Models;
-using System.Collections.Generic;
 
 namespace WebUserManagement.XUnitTests
 {
     [TestCaseOrderer("WebUserManagement.XUnitTests.PriorityOrderer", "WebUserManagement.XUnitTests")]
     public class UserRepositoryTests
     {
-        private readonly TestConfiguration _configuration;
         private readonly IRepository _repository;
         public UserRepositoryTests()
         {
-            _configuration = new ConfigurationHelper().GetConfiguration();
-            _repository = CreateRepository();
+            var configuration = new ConfigurationHelper().GetConfiguration();
+            _repository = CreateRepository(configuration);
         }
 
 
@@ -50,7 +48,7 @@ namespace WebUserManagement.XUnitTests
 
         [Fact, TestPriority(3)]
         public async Task Update_Should_Change_User_FirsName_And_LastName()
-        {           
+        {
             var users = await _repository.GetAllAsync();
             foreach (var user in users)
             {
@@ -78,9 +76,9 @@ namespace WebUserManagement.XUnitTests
             removedUser.Should().BeNull();
         }
 
-        private IRepository CreateRepository()
+        private IRepository CreateRepository(TestConfiguration configuration)
         {
-            return new UserRepository(new SqlConnection(_configuration.Connection));
+            return new UserRepository(new SqlConnection(configuration.Connection));
         }
     }
 }
