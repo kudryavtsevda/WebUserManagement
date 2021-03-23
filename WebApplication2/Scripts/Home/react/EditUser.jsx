@@ -5,6 +5,7 @@ import { Formik, Field, Form, useFormik } from 'formik';
 import * as Yup from 'yup';
 import 'materialize-css';
 import { TextInput, Button, Icon } from 'react-materialize';
+import { useHistory } from "react-router-dom";
 import DataService from './DataService';
 
 class EditUserComponent extends React.Component {
@@ -23,6 +24,8 @@ class EditUserComponent extends React.Component {
                 .required('Last name is required'),
             email: Yup.string().email('Invalid email').required('Email is required'),
         });
+
+
     }
 
     componentDidMount() {
@@ -36,10 +39,13 @@ class EditUserComponent extends React.Component {
         console.log(values);
         DataService.update(this.state.Id, values)
             .then(response => {
-                if (response.status == 200) {
-                    this.setState({ errorServerMessage:"SERVER ERROR"})
+                if (response.status != 200) {
+                    this.setState({ errorServerMessage: "SERVER ERROR" })
+                } else {
+                    this.props.history.push("/");
                 }
             })
+            
     }
 
     render() {
@@ -85,8 +91,11 @@ class EditUserComponent extends React.Component {
                                 error={errors.email ?? ''}
                                 validate={false}
                             />
-                            <Button node="button" type="submit" waves="light" icon={<Icon right>send</Icon>}>
+                            <Button node="button" type="submit" waves="light" icon={<Icon right>send</Icon>} >
                                 Submit
+                            </Button>
+                            <Button node="button" waves="light" icon={<Icon right>arrow_back</Icon>} className="buttonClass">
+                                Cancel
                             </Button>
                         </Form>
                     )}
