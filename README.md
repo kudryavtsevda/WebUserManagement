@@ -6,7 +6,7 @@
 * There are two UI projects: MVC.UI and UI.ReactJS
 * XUnitTests contains integration tests only so far.
 
-![image](https://user-images.githubusercontent.com/4447809/112223312-29fbd700-8c43-11eb-91f0-341eb01ff298.png)
+![Solution structure](https://user-images.githubusercontent.com/4447809/112223312-29fbd700-8c43-11eb-91f0-341eb01ff298.png)
 
 
 ### Configuration
