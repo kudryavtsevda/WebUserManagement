@@ -1,0 +1,20 @@
+﻿.input-field .helper-text:before {
+    display: inline;
+    content: attr(data-error);
+    color: red;
+}
+
+div#app {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+button.btn.waves-effect.waves-light {
+    margin-right: 5px;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

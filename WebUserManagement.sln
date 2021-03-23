@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.DTO", "We
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUserManagement.XUnitTests", "WebUserManagement.XUnitTests\WebUserManagement.XUnitTests.csproj", "{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{B2D2B318-E814-49D5-B50E-73EF78615E59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.UI.ReactJS", "WebUserManagement.UI.ReactJS\WebUserManagement.UI.ReactJS.csproj", "{310912B6-D3F5-4395-9127-BCEB51078785}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,10 +43,10 @@ Global
 		{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{310912B6-D3F5-4395-9127-BCEB51078785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{310912B6-D3F5-4395-9127-BCEB51078785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{310912B6-D3F5-4395-9127-BCEB51078785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{310912B6-D3F5-4395-9127-BCEB51078785}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
