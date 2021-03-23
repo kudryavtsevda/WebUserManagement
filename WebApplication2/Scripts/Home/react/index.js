@@ -1,10 +1,10 @@
 ﻿import React from 'react';
 import { render } from 'react-dom';
-import axios from "axios";
 import 'materialize-css';
 import { Button, Icon } from 'react-materialize';
 import { MainScreen } from './MainScreen.jsx';
 import { EditUser } from './EditUser.jsx';
+import { AddUser } from './AddUser.jsx';
 import {
     BrowserRouter as Router,
     Switch,
@@ -24,7 +24,8 @@ class App extends React.Component {
                             <Link to="/">
                                 <Button icon={<Icon right>list</Icon>} flat node="button" waves="light">
                                     Get all users
-                                 </Button></Link>
+                                 </Button>
+                            </Link>
                         </li>
                         <li>
                             <Link to="/createuser">
@@ -40,7 +41,7 @@ class App extends React.Component {
                             <MainScreen />
                         </Route>
                         <Route path="/createuser">
-                            <div>CREATE USER</div>
+                            <AddUser />
                         </Route>
                         <Route path="/edituser/:id">
                             <EditUser />

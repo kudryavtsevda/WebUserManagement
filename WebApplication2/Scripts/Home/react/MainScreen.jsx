@@ -1,6 +1,5 @@
-﻿import React from 'react';
-import { render } from 'react-dom';
-import axios from "axios";
+﻿import { withRouter } from "react-router";
+import React from 'react';
 import 'materialize-css';
 import { Table, Icon, Button } from 'react-materialize';
 import {
@@ -9,7 +8,7 @@ import {
 } from "react-router-dom";
 import DataService from './DataService'
 
-export class MainScreen extends React.Component {
+class MainScreenComponent extends React.Component {
 
     constructor(props) {
         super(props);
@@ -19,17 +18,27 @@ export class MainScreen extends React.Component {
     }
 
     componentDidMount() {
+        this.refreshUsers();
+    }
+
+    refreshUsers() {
         DataService.getAll().then((response) => {
             this.setState({ users: response.data });
         });
     }
-    render() {
 
+    removeUser(id) {
+        DataService.delete(id).then(() => {
+            this.refreshUsers();
+        });
+    }
+
+    render() {
         return (
             <Table>
                 <thead>
                     <tr>
-                        <th>Action</th>
+                        <th>Actions</th>
                         <th data-field="firsname">First Name</th>
                         <th data-field="lastname">Last Name</th>
                         <th data-field="email">Email</th>
@@ -39,11 +48,23 @@ export class MainScreen extends React.Component {
                     {
                         this.state.users.map(user => (
                             <tr key={user.Id}>
-                                <td><Link to={`/edituser/${user.Id}`} >
-                                    <Button icon={<Icon right>update</Icon>} flat node="button" waves="light">
-                                        Edit
+                                <td>
+                                    <Link to={`/edituser/${user.Id}`} >
+                                        <Button icon={<Icon right>mode_edit</Icon>} flat node="button" waves="light">
+                                            Edit
+                                        </Button>
+                                    </Link>
+
+                                    <Button icon={<Icon right>delete</Icon>}
+                                        flat
+                                        node="button"
+                                        waves="light"
+                                        onClick={() => this.removeUser(user.Id)}
+                                    >
+                                        Delete
                                     </Button>
-                                </Link></td>
+
+                                </td>
                                 <td>{user.FirstName}</td>
                                 <td>{user.LastName}</td>
                                 <td>{user.Email}</td>
@@ -55,3 +76,5 @@ export class MainScreen extends React.Component {
         );
     }
 }
+
+export const MainScreen = withRouter(MainScreenComponent)

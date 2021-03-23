@@ -10,7 +10,7 @@ class DataService {
     }
 
     create(data) {
-        return http.post("/tutorials", data);
+        return http.post("", data);
     }
 
     update(id, data) {
@@ -18,15 +18,7 @@ class DataService {
     }
 
     delete(id) {
-        return http.delete(`/tutorials/${id}`);
-    }
-
-    deleteAll() {
-        return http.delete(`/tutorials`);
-    }
-
-    findByTitle(title) {
-        return http.get(`/tutorials?title=${title}`);
+        return http.delete(`${id}`);
     }
 }
 

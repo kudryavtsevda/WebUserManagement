@@ -1,12 +1,11 @@
 ﻿import { withRouter } from "react-router";
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { Formik, Field, Form, useFormik } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import 'materialize-css';
 import { TextInput, Button, Icon } from 'react-materialize';
-import { useHistory } from "react-router-dom";
 import DataService from './DataService';
+import { ServerErrorSummary } from './ServerErrorSummary.jsx';
 
 class EditUserComponent extends React.Component {
     constructor(props) {
@@ -24,8 +23,6 @@ class EditUserComponent extends React.Component {
                 .required('Last name is required'),
             email: Yup.string().email('Invalid email').required('Email is required'),
         });
-
-
     }
 
     componentDidMount() {
@@ -36,16 +33,18 @@ class EditUserComponent extends React.Component {
     }
 
     updateUser(values) {
-        console.log(values);
         DataService.update(this.state.Id, values)
             .then(response => {
-                if (response.status != 200) {
-                    this.setState({ errorServerMessage: "SERVER ERROR" })
-                } else {
-                    this.props.history.push("/");
-                }
+                this.backToMainScreen()
             })
-            
+            .catch(error => {
+                console.log(error);
+                this.setState({ errorServerMessage: error.response.data.Message && error.response.data.Message });
+            });
+    }
+
+    backToMainScreen() {
+        this.props.history.push("/");
     }
 
     render() {
@@ -58,7 +57,8 @@ class EditUserComponent extends React.Component {
 
         return (
             <div>
-                {errorServerMessage && <div>{errorServerMessage}</div>}
+                <ServerErrorSummary message={errorServerMessage} />
+
                 <Formik
                     initialValues={initialValues}
                     validationSchema={this.validation}
@@ -94,7 +94,7 @@ class EditUserComponent extends React.Component {
                             <Button node="button" type="submit" waves="light" icon={<Icon right>send</Icon>} >
                                 Submit
                             </Button>
-                            <Button node="button" waves="light" icon={<Icon right>arrow_back</Icon>} className="buttonClass">
+                            <Button node="button" waves="light" icon={<Icon right>arrow_back</Icon>} onClick={() => this.backToMainScreen()}>
                                 Cancel
                             </Button>
                         </Form>

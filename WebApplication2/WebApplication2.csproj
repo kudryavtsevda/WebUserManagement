@@ -133,11 +133,13 @@
     <Content Include="Global.asax" />
     <Content Include="package.json" />
     <Content Include=".babelrc" />
+    <Content Include="Scripts\Home\react\AddUser.jsx" />
     <Content Include="Scripts\Home\react\DataService.js" />
     <Content Include="Scripts\Home\react\EditUser.jsx" />
     <Content Include="Scripts\Home\react\http-common.js" />
     <Content Include="Scripts\Home\react\index.js" />
     <Content Include="Scripts\Home\react\MainScreen.jsx" />
+    <Content Include="Scripts\Home\react\ServerErrorSummary.jsx" />
     <Content Include="webpack.config.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -148,7 +150,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
