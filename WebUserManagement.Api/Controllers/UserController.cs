@@ -2,10 +2,12 @@
 using System.Web.Http;
 using WebUserManagement.DTO;
 using WebUserManagement.Api.Services;
+using System.Web.Http.Cors;
 
 namespace WebUserManagement.Api.Controllers
 {
     [RoutePrefix("api/users")]
+    [EnableCors("*", "*", "*")]
     public class UserController : ApiController
     {
         private readonly IUserService _service;

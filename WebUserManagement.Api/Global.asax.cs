@@ -9,7 +9,8 @@ namespace WebUserManagement.Api
         protected void Application_Start()
         {
             GlobalConfiguration.Configure(WebApiConfig.Register);
-            NinjectHttpContainer.RegisterModules(NinjectHttpModules.Modules);            
+            NinjectHttpContainer.RegisterModules(NinjectHttpModules.Modules);   
+            
         }
     }
 }

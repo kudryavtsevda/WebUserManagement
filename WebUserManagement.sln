@@ -11,7 +11,9 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "WebUserManagement.Database"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.DTO", "WebUserManagement.DTO\WebUserManagement.DTO.csproj", "{438051DC-A9D7-4FD0-B937-21153BA0EF0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUserManagement.XUnitTests", "WebUserManagement.XUnitTests\WebUserManagement.XUnitTests.csproj", "{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUserManagement.XUnitTests", "WebUserManagement.XUnitTests\WebUserManagement.XUnitTests.csproj", "{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApplication2", "WebApplication2\WebApplication2.csproj", "{B2D2B318-E814-49D5-B50E-73EF78615E59}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,6 +43,10 @@ Global
 		{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B74D157A-5C5F-46C8-93D2-4D18CB553EC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2D2B318-E814-49D5-B50E-73EF78615E59}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

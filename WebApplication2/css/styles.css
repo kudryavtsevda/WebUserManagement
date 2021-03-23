@@ -1,0 +1,10 @@
+﻿.input-field .helper-text:before {
+    display: inline;
+    content: attr(data-error);
+    color: red;
+}
+
+div#app {
+    max-width: 500px;
+    margin: 0 auto;
+}
