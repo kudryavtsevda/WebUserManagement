@@ -131,6 +131,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\Home\react\AddUser.jsx" />
+    <Content Include="Scripts\Home\react\App.jsx" />
     <Content Include="Scripts\Home\react\DataService.js" />
     <Content Include="Scripts\Home\react\EditUser.jsx" />
     <Content Include="Scripts\Home\react\http-common.js" />
