@@ -2,10 +2,7 @@
 import React from 'react';
 import 'materialize-css';
 import { Table, Icon, Button } from 'react-materialize';
-import {
-    BrowserRouter as Router,
-    Link
-} from "react-router-dom";
+import { Link } from "react-router-dom";
 import DataService from './DataService'
 
 class MainScreenComponent extends React.Component {
