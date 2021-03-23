@@ -9,6 +9,7 @@ The solution is created via Visual Studio 2019.
 * XUnitTests contains integration tests only so far.
 
 ![Solution structure](https://user-images.githubusercontent.com/4447809/112223312-29fbd700-8c43-11eb-91f0-341eb01ff298.png)
+
 *Figure 0 - Solution structure*
 
 ### Configuration
@@ -31,4 +32,4 @@ Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
 
 ![image](https://user-images.githubusercontent.com/4447809/112223159-fa4ccf00-8c42-11eb-8e84-6495654d1cff.png)
 
-*_Figure 3 - React UI*
+*Figure 3 - React UI*
