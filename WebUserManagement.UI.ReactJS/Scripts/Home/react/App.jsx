@@ -20,14 +20,14 @@ export function App(props) {
                         <Link to="/">
                             <Button icon={<Icon right>list</Icon>} flat node="button" waves="light">
                                 Get all users
-                                 </Button>
+                            </Button>
                         </Link>
                     </li>
                     <li>
                         <Link to="/createuser">
                             <Button icon={<Icon right>person_add</Icon>} flat node="button" waves="light">
                                 Add user
-                                 </Button>
+                            </Button>
                         </Link>
                     </li>
                 </ul>

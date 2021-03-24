@@ -138,6 +138,7 @@
     <Content Include="Scripts\Home\react\index.js" />
     <Content Include="Scripts\Home\react\MainScreen.jsx" />
     <Content Include="Scripts\Home\react\ServerErrorSummary.jsx" />
+    <Content Include="Scripts\Home\react\utils.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

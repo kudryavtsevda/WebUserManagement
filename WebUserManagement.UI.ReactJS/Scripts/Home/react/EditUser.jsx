@@ -1,11 +1,11 @@
 ﻿import { withRouter } from "react-router";
 import React from 'react';
 import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import 'materialize-css';
 import { TextInput, Button, Icon } from 'react-materialize';
 import DataService from './DataService';
 import { ServerErrorSummary } from './ServerErrorSummary.jsx';
+import { getValidationSchema } from "./utils";
 
 class EditUserComponent extends React.Component {
     constructor(props) {
@@ -16,13 +16,7 @@ class EditUserComponent extends React.Component {
             errorServerMessage: ''
         };
 
-        this.validation = Yup.object().shape({
-            firstName: Yup.string()
-                .required('First name is required'),
-            lastName: Yup.string()
-                .required('Last name is required'),
-            email: Yup.string().email('Invalid email').required('Email is required'),
-        });
+        this.validation = getValidationSchema();
     }
 
     componentDidMount() {
@@ -39,11 +33,11 @@ class EditUserComponent extends React.Component {
             })
             .catch(error => {
                 console.log(error);
-                this.setState({ errorServerMessage: error.response.data.Message && error.response.data.Message });
+                this.setState({ errorServerMessage: error.response.data?.Message });
             });
     }
 
-    backToMainScreen() {
+    backToMainScreen = () => {
         this.props.history.push("/");
     }
 
@@ -94,7 +88,7 @@ class EditUserComponent extends React.Component {
                             <Button node="button" type="submit" waves="light" icon={<Icon right>send</Icon>} >
                                 Submit
                             </Button>
-                            <Button node="button" waves="light" icon={<Icon right>arrow_back</Icon>} onClick={() => this.backToMainScreen()}>
+                            <Button node="button" waves="light" icon={<Icon right>arrow_back</Icon>} onClick={this.backToMainScreen}>
                                 Cancel
                             </Button>
                         </Form>

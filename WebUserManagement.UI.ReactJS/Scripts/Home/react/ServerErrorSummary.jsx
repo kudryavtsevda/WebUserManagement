@@ -1,15 +1,10 @@
 ﻿import React from 'react';
 
 export function ServerErrorSummary(props) {
-    return (
-
+    return props.message && (
         <div>
-            { props.message &&
-                <div>
-                    <h4>Server side error:</h4>
-                    <span style={{ color: "red" }}>{props.message}</span>
-                </div>
-            }
+            <h4>Server side error:</h4>
+            <span style={{ color: "red" }}>{props.message}</span>
         </div>
-    );
+    )
 }
