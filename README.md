@@ -15,8 +15,10 @@ The solution is created via Visual Studio 2019.
 ### Configuration
 #### Api
 Web.config contains DbConnection string. Don't forget to setup it properly.
+ASP.NET MVC Framework is chosen in accordance with technical requirements.
 #### MVC.UI
 Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
+ASP.NET MVC Framework is chosen in accordance with technical requirements.
 
 ![image](https://user-images.githubusercontent.com/4447809/112223259-1a7c8e00-8c43-11eb-99a5-262152605dc1.png)
 
@@ -24,6 +26,7 @@ Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
 
 #### UI.ReactJS
 * Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
+* ASP.NET MVC Framework as hosting of ReactJS UI is chosen in accordance with technical requirements.
 * Apply "npm install" for package.json file to download all dependencies.
 * React components are located [here: WebUserManagement.UI.ReactJS/Scripts/Home/react/](https://github.com/kudryavtsevda/WebUserManagement/tree/master/WebUserManagement.UI.ReactJS/Scripts/Home/react )
 
