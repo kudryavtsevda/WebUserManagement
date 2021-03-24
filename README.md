@@ -25,6 +25,7 @@ Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
 #### UI.ReactJS
 * Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
 * Apply "npm install" for package.json file to download all dependencies.
+* React components are located here: WebUserManagement.UI.ReactJS/Scripts/Home/react/
 
 ![image](https://user-images.githubusercontent.com/4447809/112223690-b1494a80-8c43-11eb-90ea-c43525acfacf.png)
 
