@@ -3,10 +3,10 @@
 The solution is created via Visual Studio 2019.
 
 ### Solution structure
-* Database project contains database scheme and seed script.
-* Api is backend project based on dapper ORM.
+* Database project contains database scheme and seed script. MS SQL database.
+* Api is backend project based on dapper ORM. ASP NET MVC Framework 4.7.2.
 * There are two UI projects: MVC.UI and UI.ReactJS
-* XUnitTests contains integration tests for repository and unit tests for user controller.
+* XUnitTests contains integration tests for repository and unit tests for user controller. FakeItEasy and XUnit frameworks are used.
 
 ![Solution structure](https://user-images.githubusercontent.com/4447809/112223312-29fbd700-8c43-11eb-91f0-341eb01ff298.png)
 
