@@ -6,7 +6,7 @@ The solution is created via Visual Studio 2019.
 * Database project contains database scheme and seed script.
 * Api is backend project based on dapper ORM.
 * There are two UI projects: MVC.UI and UI.ReactJS
-* XUnitTests contains integration tests and unit tests for user controller.
+* XUnitTests contains integration tests for repository and unit tests for user controller.
 
 ![Solution structure](https://user-images.githubusercontent.com/4447809/112223312-29fbd700-8c43-11eb-91f0-341eb01ff298.png)
 
