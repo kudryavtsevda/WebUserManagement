@@ -3,10 +3,10 @@
 The solution is created via Visual Studio 2019.
 
 ### Solution structure
-* Database project contains database scheme and seed script.
-* Api is backend project based on dapper ORM.
+* Database project contains database scheme and seed script. MS SQL database.
+* Api is backend project based on dapper ORM. ASP NET MVC Framework 4.7.2.
 * There are two UI projects: MVC.UI and UI.ReactJS
-* XUnitTests contains integration tests only so far.
+* XUnitTests contains integration tests for repository and unit tests for user controller. FakeItEasy and XUnit frameworks are used.
 
 ![Solution structure](https://user-images.githubusercontent.com/4447809/112223312-29fbd700-8c43-11eb-91f0-341eb01ff298.png)
 
@@ -15,8 +15,10 @@ The solution is created via Visual Studio 2019.
 ### Configuration
 #### Api
 Web.config contains DbConnection string. Don't forget to setup it properly.
+ASP.NET MVC Framework is chosen in accordance with technical requirements.
 #### MVC.UI
 Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
+ASP.NET MVC Framework is chosen in accordance with technical requirements.
 
 ![image](https://user-images.githubusercontent.com/4447809/112223259-1a7c8e00-8c43-11eb-99a5-262152605dc1.png)
 
@@ -24,8 +26,9 @@ Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
 
 #### UI.ReactJS
 * Web.config contains ServiceUrl app setting. Don't forget to setup it properly.
+* ASP.NET MVC Framework as hosting of ReactJS UI is chosen in accordance with technical requirements.
 * Apply "npm install" for package.json file to download all dependencies.
-* React components are located here: WebUserManagement.UI.ReactJS/Scripts/Home/react/
+* React components are located [here: WebUserManagement.UI.ReactJS/Scripts/Home/react/](https://github.com/kudryavtsevda/WebUserManagement/tree/master/WebUserManagement.UI.ReactJS/Scripts/Home/react )
 
 ![image](https://user-images.githubusercontent.com/4447809/112223690-b1494a80-8c43-11eb-90ea-c43525acfacf.png)
 
