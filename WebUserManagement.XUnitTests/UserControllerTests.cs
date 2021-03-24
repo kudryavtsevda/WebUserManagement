@@ -75,7 +75,22 @@ namespace WebUserManagement.XUnitTests
             var contentResult = res.As<OkNegotiatedContentResult<long>>();
 
             contentResult.Should().NotBeNull();
-            contentResult.Content.Should().Be(userId);            
+            contentResult.Content.Should().Be(userId);
+        }
+
+        [Fact]
+        public async Task GetById_Should_Return_User_And_Ok_StatusCode()
+        {
+            IUserService userServiceFake = A.Fake<IUserService>();
+            A.CallTo(() => userServiceFake.GetByIdAsync(A<long>.Ignored)).Returns(A.Dummy<UserResponse>());
+
+            var controller = new UserController(userServiceFake);
+            var res = await controller.GetById(A.Dummy<long>());
+
+            var contentResult = res.As<OkNegotiatedContentResult<UserResponse>>();
+
+            contentResult.Should().NotBeNull();
+            contentResult.Content.Should().NotBeNull();
         }
     }
 }
